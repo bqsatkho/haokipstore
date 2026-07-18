@@ -34,7 +34,6 @@ registerBtn.addEventListener("click", () => {
 
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Send the verification link
       sendEmailVerification(userCredential.user).then(() => {
         alert("Account Created! Please check your email inbox for a verification link before logging in.");
       });
@@ -48,7 +47,6 @@ loginBtn.addEventListener("click", () => {
 
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Check if they clicked the link in their email
       if (userCredential.user.emailVerified) {
         alert("Logged In Successfully! Welcome back.");
       } else {
@@ -65,7 +63,7 @@ const otpSection = document.getElementById("otp-section");
 const otpInput = document.getElementById("otp-input");
 const verifyOtpBtn = document.getElementById("verify-otp-btn");
 
-// Setup Invisible reCAPTCHA (Required by Firebase to prevent text spam)
+// Setup Invisible reCAPTCHA 
 window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
   'size': 'normal',
   'callback': (response) => {
@@ -80,8 +78,8 @@ sendOtpBtn.addEventListener("click", () => {
 
   signInWithPhoneNumber(auth, phoneNumber, appVerifier)
     .then((confirmationResult) => {
-      window.confirmationResult = confirmationResult; // Save it to verify later
-      otpSection.style.display = "block"; // Unhide the OTP box
+      window.confirmationResult = confirmationResult; 
+      otpSection.style.display = "block"; 
       alert("OTP Text Message Sent! Check your phone.");
     })
     .catch((error) => { alert("Error: " + error.message); });
