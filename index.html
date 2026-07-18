@@ -29,19 +29,38 @@
   </header>
 
   <!-- Login & Registration Box -->
-  <div class="login-container">
-    <h3>Welcome to Haokip Store</h3>
+  <div class="login-container" style="background: #222; padding: 20px; border-radius: 8px; margin: 20px auto; max-width: 400px; color: white;">
     
-    <label for="email">Email:</label>
-    <input type="email" id="email-input" placeholder="Enter your email">
-    <br><br>
+    <!-- Email Section (For Returning Users) -->
+    <h3>Email Login (Returning Users)</h3>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email-input" placeholder="Enter your email" style="width: 100%; margin-bottom: 10px;"><br>
     
-    <label for="password">Password:</label>
-    <input type="password" id="password-input" placeholder="Enter your password">
-    <br><br>
+    <label for="password">Password:</label><br>
+    <input type="password" id="password-input" placeholder="Enter your password" style="width: 100%; margin-bottom: 10px;"><br>
     
-    <button id="login-btn">Log In</button>
-    <button id="register-btn">Register New Account</button>
+    <button id="login-btn" style="padding: 10px; cursor: pointer;">Log In</button>
+    <button id="register-btn" style="padding: 10px; cursor: pointer;">Register with Email</button>
+
+    <hr style="margin: 20px 0; border-color: #444;">
+
+    <!-- Phone OTP Section (For New Users) -->
+    <h3>Phone Login (OTP)</h3>
+    <label for="phone">Phone Number (Include Country Code, e.g. +91):</label><br>
+    <input type="tel" id="phone-input" placeholder="+91 9876543210" style="width: 100%; margin-bottom: 10px;"><br>
+    
+    <!-- Firebase Security Check (reCAPTCHA) -->
+    <div id="recaptcha-container" style="margin-bottom: 10px;"></div>
+    
+    <button id="send-otp-btn" style="padding: 10px; cursor: pointer;">Send OTP</button>
+
+    <!-- Hidden OTP Box (Appears after sending text) -->
+    <div id="otp-section" style="display: none; margin-top: 15px;">
+      <label for="otp">Enter 6-digit OTP:</label><br>
+      <input type="text" id="otp-input" placeholder="123456" style="width: 100%; margin-bottom: 10px;"><br>
+      <button id="verify-otp-btn" style="padding: 10px; cursor: pointer; background: green; color: white;">Verify & Log In</button>
+    </div>
+
   </div>
 
   <!-- Game Catalog Section -->
@@ -49,7 +68,6 @@
     <h2>Popular Games</h2>
     <div class="game-grid">
       
-      <!-- Game Card 1 -->
       <div class="game-card">
         <div class="game-img placeholder-1"></div>
         <h3>Mobile Legends</h3>
@@ -57,7 +75,6 @@
         <button class="btn-secondary">Recharge</button>
       </div>
 
-      <!-- Game Card 2 -->
       <div class="game-card">
         <div class="game-img placeholder-2"></div>
         <h3>Free Fire</h3>
@@ -65,7 +82,6 @@
         <button class="btn-secondary">Recharge</button>
       </div>
 
-      <!-- Game Card 3 -->
       <div class="game-card">
         <div class="game-img placeholder-3"></div>
         <h3>Valorant</h3>
